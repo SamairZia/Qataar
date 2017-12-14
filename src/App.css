@@ -1,0 +1,177 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 550px;
+  width: 1300px;
+
+}
+
+.App-header {
+  /* background-color: rgb(253, 253, 253); */
+  background-color: rgb(201,204,183);
+  height: 600px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: rgb(88, 82, 82);
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif; /* Helvetica, sans-serif*/
+  font-size: 80 px;
+}
+
+.menulogo {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: rgb(192, 181, 181);
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.general{
+  /* position: absolute;*/
+  left: 600px; 
+  /* text-align: ; */
+  /* justify-content: flex-start; */
+  text-align: center
+}
+
+.imgcontainer{
+  text-align: center;
+  padding-top: 20px;
+}
+
+.labels{
+  text-align: left
+}
+.log-in{
+  text-align: center;
+  /* background: url();
+  background-image: 'url(" + bglogin.png + ")';
+  background-color: 'red'; */
+  color : #ef5350;
+}
+
+.temp{
+  text-align: center;
+  /* background-image: url("bglogin.png") */
+}
+
+.myBigGreenDialog {
+  background-color: rgb(80, 190, 218);
+  color : #ef5350;
+  width: '60%';
+  height: '900px';
+  text-align: center
+}
+
+.btn_sign_up { 
+  background-color: #ef5350;
+    border: none;
+    padding: 10px;
+  width: 190px;
+  border-radius:3px;
+  box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+    color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+  }
+
+  .btn_login { 
+    background-color: #ef5350;
+      border: none;
+      padding: 10px;
+    width: 150px;
+    border-radius:3px;
+    box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+      color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    }
+
+.fonts {
+  font-size: 11px;
+}
+
+.input_fields {
+  border: none;
+  padding: 7px;
+  width: 190px;
+  border-radius:3px;
+  box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  margin-top: 2px;
+  cursor: text;
+}
+
+.blackcolor{
+  color: rgb(68, 65, 65);
+}
+.container{
+  height: 300px;
+  width: 100%;
+  background-color: rgb(40, 37, 44);
+}
+.container-element1{
+  position: absolute;
+  top: 800px;
+  left: 16px;
+  /* text-align: left; */
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+}
+.container-element2{
+  position: absolute;
+  top: 800px;
+  left: 500px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 40px;
+}
+.container-element3{
+  position: absolute;
+  top: 800px;
+  right: 16px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 40px;
+}

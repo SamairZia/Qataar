@@ -1,12 +1,13 @@
 import * as firebase from 'firebase'
 
 const config = {
-    apiKey: "AIzaSyCfkw6wQ50hEmqiE7V83UC6kigCFSuX-b0",
-    authDomain: "qataar-b7052.firebaseapp.com",
-    databaseURL: "https://qataar-b7052.firebaseio.com",
-    projectId: "qataar-b7052",
-    storageBucket: "qataar-b7052.appspot.com",
-    messagingSenderId: "909362349185"
+    apiKey: "AIzaSyDPKOTUJCdjniZsm4lYeHnw_jGPjStqroM",
+    authDomain: "qataar-f407c.firebaseapp.com",
+    databaseURL: "https://qataar-f407c.firebaseio.com",
+    projectId: "qataar-f407c",
+    storageBucket: "",
+    messagingSenderId: "332751938955"
   };
 
-  export const firebaseApp = firebase.initializeApp(config);
+  
+export const firebaseApp = firebase.initializeApp(config);

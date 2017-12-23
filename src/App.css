@@ -6,7 +6,7 @@
   /* animation: App-logo-spin infinite 20s linear; */
   height: 550px;
   width: 1300px;
-
+  padding-top: 10px;
 }
 
 .App-header {
@@ -30,18 +30,19 @@
   to { transform: rotate(360deg); }
 }
 
+.menulogo {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: rgb(88, 82, 82);
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif; /* Helvetica, sans-serif*/
   font-size: 80 px;
-}
-
-.menulogo {
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
 }
 
 /* Style the links inside the navigation bar */
@@ -72,7 +73,7 @@
   left: 600px; 
   /* text-align: ; */
   /* justify-content: flex-start; */
-  text-align: center
+  text-align: center;
 }
 
 .imgcontainer{
@@ -84,11 +85,22 @@
   text-align: left
 }
 .log-in{
-  text-align: center;
+  /* text-align: center; */
   /* background: url();
   background-image: 'url(" + bglogin.png + ")';
   background-color: 'red'; */
-  color : #ef5350;
+  /* color : #ef5350; */
+  text-align: center;
+  padding: remy(32px);
+  margin-top: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: remy(380px);
+  width: 400px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(65, 60, 60);
+  box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  border-radius: 8px;
 }
 
 .temp{
@@ -140,10 +152,11 @@
   box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
   margin-top: 2px;
   cursor: text;
+  color: black
 }
 
 .blackcolor{
-  color: rgb(68, 65, 65);
+  color: rgb(255, 255, 255);
 }
 .container{
   height: 300px;
@@ -174,4 +187,28 @@
   color: white;
   font-family: Arial, Helvetica, sans-serif; 
   font-size: 40px;
+}
+
+.div-container{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.boxing{
+  box-sizing: border-box;
+  box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  background: rgb(209, 203, 203);
+}
+
+.right{
+  padding-top: 20px;
+  padding-left: 1228px;
+}
+
+.spanTemp{
+  padding-left: 10px;
+}
+
+.carouseltemp{
+  padding-left: 300px;
 }

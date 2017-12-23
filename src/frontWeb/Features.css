@@ -1,0 +1,55 @@
+.whitebackground{
+    background-color: #fff;
+    padding-left: 40px
+  }
+
+.maindiv{
+    padding-top: 120px
+}
+
+.heading{
+    color: #ef5350;
+    text-align: center;
+}
+
+.tagline{
+    color: rgb(88, 82, 82);
+    font-size:  x-large;
+    text-align: center
+}
+
+.paragraph{
+    color: rgb(88, 82, 82);
+    font-size:  x-large;
+    text-align: justify;
+    text-justify: inter-cluster;
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+.image{
+    padding-top: 50px;
+    padding-left: 120px;
+}
+
+.memberimage{
+    height: 320px;
+    width: 250px;
+}
+
+.aboutdiv{
+    padding-left: 120px;
+    padding-top: 100px;
+}
+
+.aboutheading{
+    color: #ef5350;
+}
+
+.aboutparagraph{
+    color: rgb(88, 82, 82);
+    font-size: larger;
+    text-align: justify;
+    text-justify: inter-cluster;
+    padding-right: 200px;
+}

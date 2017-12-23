@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
 import './App.css';
 import SkyLight from 'react-skylight'
 import bglogin from './bglogin.png'
 import Terms from './Terms'
 import {firebaseApp} from './firebase'
 
-export default class Signup extends Component{
+class Signup extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -16,14 +17,13 @@ export default class Signup extends Component{
                 message: ''
             }
         };
-        // this.handleChange = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    // handleChange() {
-    //     this.setState({
-    //         checked: !this.state.checked
-    //     })
-    // }
+    handleChange(e) {
+        e.preventDefault();
+        this.props.history.push('/company')
+    }
 
     signUp() {
         console.log('this.state' , this.state);
@@ -31,23 +31,17 @@ export default class Signup extends Component{
         firebaseApp.auth().createUserWithEmailAndPassword(email,password)
         .catch(error => {
             this.setState({error});
-            // this.handleChange()
         })
     }
 
-    // checking(){
-    //     if (this.state.check == '') {
-    //         <label>call </label>
-    //     }
+    // patch(e) {
+    //     this.handleChange(e);
+    //     this.props.signUp();
     // }
 
     render(){
-        // const content = this.state.checked 
-        // ? <div> Content </div>
-        // : null;
-
         return(
-            <div className="temp">
+            <div className="log-in">
                 <div>
                     <h3>Welcome</h3>
                 </div><br />
@@ -71,7 +65,7 @@ export default class Signup extends Component{
                 <input type="checkbox" required /><label className="fonts"> I Agree to the 
                     <a href={"/terms"} target="_blank">Terms and Conditions</a></label> <br/><br/>
 
-                <button className="btn_sign_up" type="submit" onClick={() => this.signUp()} >SIGN UP</button>
+                <button className="btn_sign_up" type="submit" onClick={this.handleChange} >SIGN UP</button>
 
                 {/* content */}
                 </div><br/>
@@ -80,3 +74,5 @@ export default class Signup extends Component{
         )
     }
 }
+
+export default withRouter(Signup);

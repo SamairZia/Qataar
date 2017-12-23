@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap'
 
 export default class AddTeam extends Component{
 
@@ -46,8 +47,9 @@ export default class AddTeam extends Component{
                     <select ref="title">
                         {titleOptions}
                     </select>
-                </div>
+                </div><br />
                 <input type="submit" value="submit" />
+                {/* <Button bsStyle="primary">Submit</Button> */}
             </form>
         </div>            
         )

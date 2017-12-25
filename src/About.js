@@ -9,7 +9,6 @@ import { Grid, Row, Col , Image} from 'react-bootstrap';
 
 export default class About extends Component{
     render(){
-
         let infoList;
         if(this.props.info){
             infoList = this.props.info.map(infos => {

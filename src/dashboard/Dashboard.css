@@ -1,0 +1,25 @@
+/* used in Accounts.js */
+.maindivdash{
+    padding-left: 15%;
+    padding-top: 15px;
+}
+
+.buttondiv{
+    text-align: right;
+    padding-right: 50px;
+}
+
+.panel{
+    padding-left: 100px;
+}
+
+.input_fields_accounts {
+    border: none;
+    padding: 7px;
+    width: 400px;
+    border-radius:3px;
+    box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+    margin-top: 2px;
+    cursor: text;
+    color: black
+  }

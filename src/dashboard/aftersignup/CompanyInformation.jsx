@@ -22,7 +22,7 @@ class CompanyInformation extends Component{
     render(){
         return(
             <div className="div-container">
-            <header className="right" ><Button bsStyle="primary" >Log Out</Button></header>
+            <header className="right" ><Button bsStyle="danger" >Log Out</Button></header>
                 <PageHeader >Company Information</PageHeader>
 
                 <Panel header="Information" bsStyle="info">

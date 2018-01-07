@@ -8,7 +8,7 @@ import About from './About'
 import Contact from './Contact'
 import Account from './dashboard/Account'
 import Terms from './Terms'
-import AddTeam from './AddTeam'
+// import AddTeam from './AddTeam'
 import Whoops404 from './Whoops404'
 import Products from './frontWeb/Products'
 import Pricing from './frontWeb/Pricing'
@@ -20,6 +20,7 @@ import Users from './dashboard/Users'
 import Branches from './dashboard/Branches'
 import Information from './dashboard/Information'
 import Reports from './dashboard/Reports'
+import Sidebar from './dashboard/Sidebar'
 
 export default class MainClass extends Component{
     constructor(){
@@ -52,8 +53,16 @@ export default class MainClass extends Component{
 
     render(){
         return(
-            <div>
+            <div >
+                { (this.props.location.pathname === "/my-account")?
+                <Sidebar/> : (this.props.location.pathname === "/users") ?
+                <Sidebar /> : (this.props.location.pathname === "/reports") ?
+                <Sidebar /> : (this.props.location.pathname === "/information") ?
+                <Sidebar /> : (this.props.location.pathname === "/branches") ?
+                <Sidebar /> : (this.props.location.pathname === "/company") ?
+                <div/> :
             <Menu />
+                }
             {(this.props.location.pathname === "/") ?
             <Home /> : (this.props.location.pathname === "/sign-up") ?
             <Signup /> : (this.props.location.pathname === "/log-in") ?

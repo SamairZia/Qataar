@@ -5,9 +5,8 @@ const config = {
     authDomain: "qataar-f407c.firebaseapp.com",
     databaseURL: "https://qataar-f407c.firebaseio.com",
     projectId: "qataar-f407c",
-    storageBucket: "",
+    storageBucket: "qataar-f407c.appspot.com",
     messagingSenderId: "332751938955"
   };
-
   
 export const firebaseApp = firebase.initializeApp(config);

@@ -6,13 +6,17 @@ import registerServiceWorker from './registerServiceWorker';
 import {firebaseApp} from './firebase';
 
 
-firebaseApp.auth().onAuthStateChanged(user =>{
-    if (user){
-        console.log('user has signed in or up.', user);
-    } else {
-        console.log('user has signed out or still needs to sign in.')
-    }
-})
+// firebaseApp.auth().onAuthStateChanged(user =>{
+//     if (user){
+//         console.log('user has signed in or up.', user.email , user.name );
+//         this.setState({
+//             email: user.email,
+//             password: user.password,
+//         })
+//     } else {
+//         console.log('user has signed out or still needs to sign in.')
+//     }
+// })
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

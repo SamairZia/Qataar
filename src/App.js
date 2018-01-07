@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router , Route, history, Link , } from 'react-router-dom'
+import {BrowserRouter as Router , Route, history, Link , Redirect } from 'react-router-dom'
 import hashHistory from 'hash-history'
 import Logo from './Logo.png';
 import small_logo from './small_logo.png'
@@ -9,42 +9,45 @@ import Mainsidebar from './dashboard/Mainsidebar'
 import Sidebar from './dashboard/Sidebar'
 import CompanyInformation from './dashboard/aftersignup/CompanyInformation'
 import Services from './dashboard/aftersignup/Services'
+import Account from './dashboard/Account'
+
+
+function AuthenticatedRoute({component : Component , authenticated, ...rest}){
+  return(
+    <Route 
+    {...rest}
+    render={(props) => authenticated === true 
+    ? <Component {...props} {...rest} /> 
+  : <Redirect to ="/log-in" /> }
+    />
+  )
+}
 
 class App extends Component {
-
   //State stuff
    constructor(props){
      super(props);
-
     this.state = {
       my: "i am my",
       you: "i am you"
     }
   }
+
   render() {
     return (
-      // <Router>
-      //   <CompanyInformation />
-      //   </Router>
-      // <div>
-      // <Router>
+      <Router>
+        <div>
+        <Route path="/" component= {MainClass}/>
+        {/* <AuthenticatedRoute exact path="/my-account"
+        authenticated={this.state.authenticated} component={Account} /> */}
+        </div>
+      </Router>
 
-      //   {/* /* /* <Route path="/" component={CompanyInformation} /> */ */ */}
-      //   <CompanyInformation />
       //   {/* /* {
         //   (this.props.location.pathname === "/") ?
         //   <CompanyInformation /> : (this.props.location.pathname === "/services") ?
         //   <Services /> : <MainClass />
-        // } */ */
-      
-      // </Router>
-      /* // <Services /> */
-      /* </div> */
-      <Router>
-        <Route path="/" component= {MainClass}/>
-        {/* <Sidebar /> */}
-        {/* <Route path="/" component= {Mainsidebar}/> */}
-      </Router>
+        // } */ */     
     );
   }
 }

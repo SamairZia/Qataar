@@ -11,18 +11,18 @@ export default class Menu extends Component{
                 <div className="menulogo">
                     Logo
                 </div>
-            <nav >
-                <Link to="/partners">Partners</Link>              
-                {/* <Link to="/pricing">Pricing</Link> */}
-                {/* <Link to="/products">Products</Link> */}
-                {/* <Link to="/my-account">My Account</Link> */}
-                <Link to="/contact-us">Contact Us</Link>
-                <Link to="/about-us">About Us</Link>
-                <Link to="/features">Features</Link>
-                <Link to = "/sign-up" className="second">Sign up</Link>
-                <Link to = "/log-in" className="third">Log In</Link>              
-                <Link to = "/" className="first"><HomeIcon /></Link>
-            </nav>
+                <nav >
+                    <Link to="/partners">Partners</Link>
+                    {/* <Link to="/pricing">Pricing</Link> */}
+                    {/* <Link to="/products">Products</Link> */}
+                    {/* <Link to="/my-account">My Account</Link> */}
+                    {/* <Link to="/contact-us">Contact Us</Link> */}
+                    <Link to="/about-us">About Us</Link>
+                    <Link to="/features">Features</Link>
+                    <Link to="/sign-up" className="second">Sign up</Link>
+                    <Link to="/log-in" className="third">Log In</Link>
+                    <Link to="/" className="first"><HomeIcon /></Link>
+                </nav>
             </header>
         )
     }

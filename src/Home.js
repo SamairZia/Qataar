@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Logo from './Logo.png';
 import New_logo from './New_logo.png'
-import Logo_Image from './Logo_Image.png'
-import firstview from './HomeImages/firstview.png'
-import secondview from './HomeImages/secondview.jpg'
-import thirdview from './HomeImages/thirdview.jpg'
+import Logo_Image from './Logo_Image.png'   
+import feedback from './HomeImages/feedback.png'
 import { Grid, Row, Col, Carousel, CarouselItem } from 'react-bootstrap'
 
 export default class Home extends Component{
@@ -33,7 +31,7 @@ export default class Home extends Component{
             //             <Carousel.Caption>
             //                 <h3>Third slide label</h3>
             //                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            //             </Carousel.Caption>
+            //             </Carousel.Caption><span className="glyphicon glyphicon-eye-open" ></span><br/>
             //         </CarouselItem>
             //     </Carousel> </div> */}
               <div className="App">
@@ -42,19 +40,19 @@ export default class Home extends Component{
                     <h1 className="App-title"></h1>
                 </header>
             </div> 
-            <div className="container">
-                <div className="container-element1">Branch Management</div>
-                <div className="container-element2">Real Time Monitoring</div>
-                <div className="container-element3">Customer Feedback</div>
+            <Grid className="backgroundColordiv" >
+                <Row>
+                    <Col lg={4} className="container-element1" >Real-Time Monitoring </Col>
+                    <Col lg={4} className="container-element1"> Customer's Feedback</Col>
+                    <Col lg={4} className="container-element1">Performance</Col>                    
+                </Row>
+            </Grid>
+            <div>
+                <p className="homeparagraph" >QATAAR is a queue management system that helps you to keep track of your user traffic and real-time monitoring, it allows instant customer feedback and also helps in making your performance better.</p>
             </div>
             <footer><p>Footer </p></footer>
             </div>   
-            /* // <Grid>
-            //     <Row className="show-grid">
-            //         <Col xs={12} md={8}><code>&lt;Welcome to Qataar/&gt;</code></Col>
-            //         <Col xs={6} md={4}><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
-            //     </Row>
-            // </Grid> */
+            
         )
     }
 }

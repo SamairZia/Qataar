@@ -3,6 +3,8 @@ import '../App.css';
 import '../frontWeb/Features.css'
 import Sidebar from './Sidebar'
 import { Grid, Row, Col, Button } from 'react-bootstrap';
+import {firebaseApp} from '../firebase'
+import { database } from 'firebase';
 
 export default class Information extends Component{
 
@@ -11,35 +13,43 @@ export default class Information extends Component{
             this.state = {
                 numbernext : 2,
                 numbercurrent: 1,
-                numberprevious: 0
+                numberprevious: 0,
+                totaltickets: 0
             }
         }
     }
-    changeNext(numbernext){
-        this.setState({numbernext: this.state.numbernext +1});
-    }
-    changeCurrent(numbercurrent){
-        this.setState({numbercurrent: this.state.numbercurrent +1});
-    }
-    changePrevious(numberprevious){
-        this.setState({numberprevious: this.state.numberprevious +1});
+    changeNext(){
+        this.setState({
+            numbernext: this.state.numbernext +1,
+            numbercurrent: this.state.numbercurrent +1,
+            numberprevious: this.state.numberprevious +1
+        });
     }
 
-    changeAll(e){
-        this.changeNext(this.numbernext)
-        this.changeCurrent(this.numbercurrent)
-        this.changePrevious(this.numberprevious)
+    componentWillMount(){
+        const db = firebaseApp.database();
+        const rootRef = db.ref().child('Information');
+        const totalRef = rootRef.child('totaltickets');
+        totalRef.on('value' , snap => {
+            this.setState({
+                totaltickets: snap.val()
+            })
+        })
     }
 
     render(){
         return(
             <div  className="maindivdash">
-                <Sidebar />
+                {/* <Sidebar /> */}
+                {/* header class in Dashboard.css */}
                 <header className="buttondiv" >
-                    <Button bsStyle="danger">Logout</Button>                    
+                    {/* <Button bsStyle="danger">Logout</Button>                */}
                 </header>
                 <div >
                     <Grid className="whitebackground">
+                    <Row>
+                        <h3>{'\t'}Total Tickets: {this.state.totaltickets}</h3>
+                    </Row>
                     <Row className="show-grid" >
                         <Col lg={4}>
                         <h3 className="roundshapeheadingnext"><strong>Next</strong></h3>
@@ -64,7 +74,7 @@ export default class Information extends Component{
                         </Col>
                         <Col lg={6}>
                         <div className="righticon">                        
-                        <button className="roundbuttonnext" onClick={this.changeAll.bind(this)} ><span className="glyphicon glyphicon-chevron-right"></span></button><br/>
+                        <button className="roundbuttonnext" onClick={this.changeNext.bind(this)} ><span className="glyphicon glyphicon-chevron-right"></span></button><br/>
                         <label>Call Next</label>
                         </div>
                         </Col>

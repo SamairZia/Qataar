@@ -20,16 +20,17 @@ export default class Information extends Component{
             this.onDateChange = this.onDateChange.bind(this);
         }
     }
-    
+
     onDateChange(event){
         this.setState({
             mydate: event.target.value
         })
     }
-    
+
     changeNext(numbernext){
         this.setState({numbernext: this.state.numbernext +1});
     }
+
     changeCurrent(numbercurrent){
         this.setState({numbercurrent: this.state.numbercurrent +1});
         var companyId = firebase.auth().currentUser.uid;
@@ -39,6 +40,7 @@ export default class Information extends Component{
         var company = companyRef.update({'companyId': companyId});
         var currentToken = companyRef.update({'currentToken': this.state.numbercurrent + 1});
     }
+
     changeTotal(numberTotal){
         this.setState({numberprevious: this.state.numberTotal +1});
     }
@@ -65,11 +67,9 @@ export default class Information extends Component{
     tokenRef.on('value',(snapshot) => {
         this.setState({numberTotal: snapshot.val().Total});
     });
-
     }
 
-    render(){
-       
+    render(){  
         return(
             <div  className="maindivdash">
                 {/* <Sidebar /> */}
@@ -80,7 +80,8 @@ export default class Information extends Component{
                 <div >
                     <Grid className="whitebackground">
                     <Row>
-                        <Col lg={8}><h3>{'\t'}Total Tickets: {this.state.totaltickets}</h3></Col>
+                        {/* <Col lg={8}><h3>{'\t'}Total Tickets: {this.state.totaltickets}</h3></Col> */}
+                        <Col lg={8}><h3></h3></Col>                        
                         <Col lg={3}><h4>Today's Date:{'\t'}{this.state.currentTime}</h4></Col>
                     </Row>
                     <Row className="show-grid" >

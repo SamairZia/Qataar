@@ -117,7 +117,7 @@ class Signup extends Component{
         return(
             <div className="log-in">
                 <div>
-                    <h3>Welcome</h3>
+                    <h3>Sign Up</h3>
                 </div><br />
                 <div>
                 

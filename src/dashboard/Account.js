@@ -81,7 +81,7 @@ export default class Account extends Component{
             <div className="maindivdash">
              {/* <Sidebar /> */}
                 <header className="buttondiv" >
-                <p>{this.state.email}</p>   
+                {/* <p>{this.state.email}</p>    */}
                 <p>{this.state.Heliz}</p>
                 {/* <p>{this.state.Heliz}</p>                 */}
                 {/* <h2>{this.state.useruid}</h2>              */}

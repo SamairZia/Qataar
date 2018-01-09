@@ -137,6 +137,19 @@
   cursor: pointer;
 }
 
+.btn_logout { 
+  background-color: #ef5350;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  border-radius:3px;
+  box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+  /* padding-left: 20px; */
+}
+
 .fonts {
   font-size: 11px;
   color: #fff

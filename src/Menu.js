@@ -9,7 +9,7 @@ export default class Menu extends Component{
         return(
             <header className="topnav">
                 <div className="menulogo">
-                    Logo
+                    {/* Logo */}
                 </div>
                 <nav >
                     <Link to="/partners">Partners</Link>

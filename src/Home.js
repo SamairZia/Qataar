@@ -3,6 +3,7 @@ import './App.css';
 import Logo from './Logo.png';
 import New_logo from './New_logo.png'
 import Logo_Image from './Logo_Image.png'   
+// import Logo_final from './Logo_final.TIF'
 import feedback from './HomeImages/feedback.png'
 import { Grid, Row, Col, Carousel, CarouselItem } from 'react-bootstrap'
 

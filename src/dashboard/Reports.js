@@ -12,16 +12,16 @@ class Reports extends Component{
         super(props);
     }
 
-    handleMe(){
-        alert('me')
-        const refdb = firebaseApp.database();
-        const newRef = refdb.ref().child("Reports");
-        newRef.push({
-            name: 'admin',
-            work: 'both operations',
-            age: 45,
-        });
-    }
+    // handleMe(){
+    //     alert('me')
+    //     const refdb = firebaseApp.database();
+    //     const newRef = refdb.ref().child("Reports");
+    //     newRef.push({
+    //         name: 'admin',
+    //         work: 'both operations',
+    //         age: 45,
+    //     });
+    // }
 
     handleLink(e){
         e.preventDefault();
@@ -30,7 +30,7 @@ class Reports extends Component{
 
     handleBoth(e){
         this.handleLink(e);
-        this.handleMe();
+        // this.handleMe();
     }
 
     render(){

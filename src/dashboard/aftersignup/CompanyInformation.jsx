@@ -42,6 +42,7 @@ class CompanyInformation extends Component{
             companyname : event.target.value
         })
     }
+    
 
     onCompanyLocationChange(event){
         this.setState({
@@ -119,11 +120,12 @@ class CompanyInformation extends Component{
             serviceFour : this.state.serviceFour,
             serviceFive : this.state.serviceFive,
         }
+        const forID = firebaseApp.auth().currentUser.uid;
         if(this.state.companyname === '' ||this.state.companylocation === '' || this.state.companyaddress === '' ||this.state.contactemail === '' ||this.state.companywebsite === '' ||this.state.companybranches === '' || this.state.serviceOne === '') {
             alert('Please Fill all the fields and add atleast one Service.')
         }else {
-        const fire = dbRef.ref('/CompanyInformation/Company')
-                fire.child(this.state.companyname).set({ companyInfo , servicesInfo })
+        const fire = dbRef.ref('/Companies')
+                fire.child(forID).update({ companyInfo , servicesInfo })
                     .then((success) => {
                         alert('Information added succesfully')
                     })

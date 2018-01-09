@@ -52,8 +52,8 @@ export default class Contact extends Component{
         if(this.state.name === '' || this.state.email === ''){
             alert('Please fill the required fileds.')
         } else {
-        const newRef = refdb.ref().child("Contact");
-        newRef.push().set(contacts)
+        const newRef = refdb.ref('/Contact')
+        const afterRef = newRef.push(contacts)
         .then((success) => {
             this.setState({
                 name: '',
@@ -62,6 +62,7 @@ export default class Contact extends Component{
             })
         });
         alert('me');
+        // console.log(afterRef.key)
     }}
 
     render(){

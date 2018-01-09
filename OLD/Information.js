@@ -3,79 +3,58 @@ import '../App.css';
 import '../frontWeb/Features.css'
 import Sidebar from './Sidebar'
 import { Grid, Row, Col, Button } from 'react-bootstrap';
-import firebase from 'firebase';
+import {firebaseApp} from '../firebase'
+import { database } from 'firebase';
+import index from 'hash-history';
 
 export default class Information extends Component{
 
     constructor(){
         super();{
             this.state = {
-                numbernext : 1,
-                numbercurrent: 0,
+                numbernext : 2,
+                numbercurrent: 1,
+                // numberprevious: 0,
                 numberTotal: 0,
-                // totaltickets: 0,
+                totaltickets: 0,
                 mydate: '',
                 currentTime : new Date().toLocaleDateString()
             }
             this.onDateChange = this.onDateChange.bind(this);
         }
     }
-    
+
     onDateChange(event){
         this.setState({
             mydate: event.target.value
         })
     }
-    
-    changeNext(numbernext){
-        this.setState({numbernext: this.state.numbernext +1});
-    }
-    changeCurrent(numbercurrent){
-        this.setState({numbercurrent: this.state.numbercurrent +1});
-        var companyId = firebase.auth().currentUser.uid;
-        var rootRef =  firebase.database().ref();
-        var companiesRef = rootRef.child('Companies/');
-        var companyRef = companiesRef.child(companyId);
-        var company = companyRef.update({'companyId': companyId});
-        var currentToken = companyRef.update({'currentToken': this.state.numbercurrent + 1});
-    }
-    changeTotal(numberTotal){
-        this.setState({numberprevious: this.state.numberTotal +1});
+
+    changeNext(){
+        this.setState({
+            numbernext: this.state.numbernext +1,
+            numbercurrent: this.state.numbercurrent +1,
+            numberprevious: this.state.numberprevious +1
+        });
     }
 
-    changeAll(e){
-        this.changeNext(this.numbernext)
-        this.changeCurrent(this.numbercurrent)
-        // this.changeTotal(this.numberTotal)
-    }
-
-    componentWillMount() {
-    var companyId = 'z6eJ41eZ3aMfyTToRIzkdy8Tett2/';        
-    var rootRef =  firebase.database().ref();
-    var companiesRef = rootRef.child('Companies/');
-    var companyRef = companiesRef.child(companyId);
-    var currentTokenRef = companyRef.child('currentToken/');
-    currentTokenRef.on('value',(snapshot)=>{
-        this.setState({numbercurrent: snapshot.val()});
-        this.setState({numbernext: snapshot.val()+1});
-        
-    });
-
-    var tokenRef = firebase.database().ref('Tokens/');
-    tokenRef.on('value',(snapshot) => {
-        this.setState({numberTotal: snapshot.val().Total});
-    });
-
+    componentWillMount(){
+        const db = firebaseApp.database();
+        const rootRef = db.ref().child('Information');
+        const totalRef = rootRef.child('totaltickets');
+        totalRef.on('value' , snap => {
+            this.setState({
+                totaltickets: snap.val()
+            })
+        })
     }
 
     render(){
-       
         return(
             <div  className="maindivdash">
-                {/* <Sidebar /> */}
                 {/* header class in Dashboard.css */}
                 <header className="buttondiv" >
-                    {/* <Button bsStyle="danger">Logout</Button>                     */}
+                    {/* <Button bsStyle="danger">Logout</Button>*/}
                 </header>
                 <div >
                     <Grid className="whitebackground">
@@ -93,8 +72,8 @@ export default class Information extends Component{
                         <p className="roundshapecenter">{this.state.numbercurrent}</p>
                         </Col>
                         <Col lg={4}>
-                        <h3 className="roundshapeheadingprevious"><strong>Total</strong></h3>
-                        <p className="roundshape">{this.state.numberTotal}</p>
+                        <h3 className="roundshapeheadingprevious"><strong>Previous</strong></h3>
+                        <p className="roundshape">{this.state.numberprevious}</p>
                         </Col>
                     </Row>
                     <div className="maindiv" ></div>
@@ -107,7 +86,7 @@ export default class Information extends Component{
                         </Col>
                         <Col lg={6}>
                         <div className="righticon">                        
-                        <button className="roundbuttonnext" onClick={this.changeAll.bind(this)} ><span className="glyphicon glyphicon-chevron-right"></span></button><br/>
+                        <button className="roundbuttonnext" onClick={this.changeNext.bind(this)} ><span className="glyphicon glyphicon-chevron-right"></span></button><br/>
                         <label>Call Next</label>
                         </div>
                         </Col>

@@ -36,11 +36,11 @@ class Login extends Component{
             password : this.state.password,
         }
         firebaseApp.auth().signInWithEmailAndPassword(user.email , user.password)
-        .then((success) => {
-            dbRef.child('user/' + success.uid).once('value')
+        // .then((success) => {
+        //     dbRef.child('user/' + success.uid).once('value')
             .then((success) => {
                 this.props.history.push('/my-account')
-            })
+            // })
         })
         .catch((error) => {
             let errorCode = error.code;

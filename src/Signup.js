@@ -58,7 +58,7 @@ class Signup extends Component{
 
     onSignup(){
         const dbRef = firebaseApp.database().ref("/");
-        let user = {
+        let admin = {
             name : this.state.name,
             company : this.state.company,
             email :this.state.email,
@@ -66,23 +66,35 @@ class Signup extends Component{
             number : this.state.number,
         }
 
-        firebaseApp.auth().createUserWithEmailAndPassword(user.email, user.password)
+        firebaseApp.auth().createUserWithEmailAndPassword(admin.email, admin.password)
         .then((res) => {
-            user.useruid = res.uid;
-            dbRef.child("user/" + res.uid).set(user)
-            .then((success) => {
-                alert('Account successfully created.')
-            })
-        })
-        .then((success) => {
-            firebaseApp.auth().signInWithEmailAndPassword(user.email, user.password)
-            .then((success) => {
-                dbRef.child('user/' + success.uid).once('value')
-                .then((success) => {
-                    this.props.history.push('/company')                    
-                })
-            })
-        })
+            //Umair's DB stuff
+            var companyId = firebaseApp.auth().currentUser.uid;
+            var rootRef =  firebaseApp.database().ref();
+            var companiesRef = rootRef.child('Companies/');
+            var companyRef = companiesRef.child(companyId);
+            var companyNew = companyRef.update({'companyId': companyId});
+            var company = companyRef.update({'AdminInfo': admin});
+               alert('Account successfully created.')
+            
+            //Qataar's DB stuff
+            // user.useruid = res.uid;
+            // dbRef.child("user/" + res.uid).set(user)
+            // .then((success) => {
+            //     alert('Account successfully created.')
+            // })
+        }).then((success) => {
+            this.props.history.push('/company')                    
+         })
+        // .then((success) => {
+        //     firebaseApp.auth().signInWithEmailAndPassword(user.email, user.password)
+        //     .then((success) => {
+        //         dbRef.child('user/' + success.uid).once('value')
+        //         .then((success) => {
+        //             this.props.history.push('/company')                    
+        //         })
+        //     })
+        // })
         .catch((error) => {
             let errorCode = error.code;
             let errorMessage = error.message;

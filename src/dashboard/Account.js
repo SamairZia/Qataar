@@ -23,21 +23,46 @@ export default class Account extends Component{
                 email: user.email,
                 password: user.password,
             })
+            const xyz =  firebaseApp.auth().currentUser.uid;
             console.log(this.state.authenticated);
+            console.log(xyz);
 
-            // const db = firebaseApp.database();
-            // const rootRef = db.ref().child('CompanyInformation/Company');
-            // const totalRef = rootRef.child('Heliz');
-            // totalRef.on('value', snap => {
-            //     this.setState({
-            //         Heliz: snap.val()
-            //     })
+            const db = firebaseApp.database();
+            const rootRef = db.ref().child('CompanyInformation/Company');
+            const totalRef = rootRef.child('Heliz');
+            totalRef.on('value' , this.getData.bind(this))
+        //     totalRef.on('value', snap => {
+        //         this.setState({
+        //             Heliz: snap.val()
+        //         })
         // })
     }
          else {
             console.log('user has signed out or still needs to sign in.')
         }
     })
+    }
+    getData(data){
+        // console.log(data.val())
+        // var temp = data.val();
+        // var keys = Object.keys(temp);
+        // var valueing = Object.values(temp)
+        // console.log(keys)
+        // console.log(valueing) 
+        // this.setState({
+        //         Heliz: valueing
+        //     })
+
+        // for(var i = 0 ; i<keys.length; i++ ){
+        //     var k = keys[i];
+        //     var companyaddress = temp[k].companyaddress;
+        //     var companyname = temp[k].companyname;
+        //     console.log(companyaddress , companyname)
+        // }
+
+        // this.setState({
+        //     Heliz: data.val()
+        // })
     }
 
     render(){
@@ -56,7 +81,9 @@ export default class Account extends Component{
             <div className="maindivdash">
              {/* <Sidebar /> */}
                 <header className="buttondiv" >
-                <p>{this.state.user}</p>   
+                <p>{this.state.email}</p>   
+                <p>{this.state.Heliz}</p>
+                {/* <p>{this.state.Heliz}</p>                 */}
                 {/* <h2>{this.state.useruid}</h2>              */}
                     {/* <Button bsStyle="danger">Logout</Button>*/}
                 </header>

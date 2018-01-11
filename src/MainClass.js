@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Menu from './Menu'
 import Signup from './Signup'
+import ConfirmEmail from './ConfirmEmail'
 import Home from './Home'
 import Login from './Login'
 import About from './About'
@@ -80,7 +81,8 @@ export default class MainClass extends Component{
             <Reports /> : (this.props.location.pathname === "/information") ?
             <Information /> : (this.props.location.pathname === "/branches") ?
             <Branches /> : (this.props.location.pathname === "/terms") ?
-            <Terms /> : <Whoops404 />
+            <Terms /> : (this.props.location.pathname === "/confirmemail") ?
+            <ConfirmEmail /> : <Whoops404 />
         }
             </div>
         )

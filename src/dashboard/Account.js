@@ -12,6 +12,9 @@ export default class Account extends Component{
         this.state = {
             email:'' , password:'' ,
             authenticated: false , Heliz:'',
+            company:'' , name: '', number: '',
+            companylocation: '', companyaddress:'',companywebsite:'',contactemail:'',
+            service1:'',service2:'',
         }
     }
 
@@ -28,15 +31,71 @@ export default class Account extends Component{
             console.log(xyz);
 
             const db = firebaseApp.database();
-            const rootRef = db.ref().child('CompanyInformation/Company');
-            const totalRef = rootRef.child('Heliz');
-            totalRef.on('value' , this.getData.bind(this))
+            const rootRef = db.ref().child('Companies/' + xyz + '/AdminInfo');
+            const cominfoRef = db.ref().child('Companies/' + xyz + '/companyInfo');            
+            const serviceRef = db.ref().child('Companies/' + xyz + '/servicesInfo');            
+            const companyRef = rootRef.child('company');
+            companyRef.on('value' , snap => {
+                this.setState({
+                    company: snap.val()
+                })
+            })
+            const nameRef = rootRef.child('name');
+            nameRef.on('value' , snap => {
+                this.setState({
+                    name: snap.val()
+                })
+            })
+            const numberRef = rootRef.child('number');
+            numberRef.on('value' , snap => {
+                this.setState({
+                    number: snap.val()
+                })
+            })
+            const locationRef = cominfoRef.child('companylocation');
+            locationRef.on('value' , snap => {
+                this.setState({
+                    companylocation: snap.val()
+                })
+            })
+            const addRef = cominfoRef.child('companyaddress');
+            addRef.on('value' , snap => {
+                this.setState({
+                    companyaddress: snap.val()
+                })
+            })
+            const siteRef = cominfoRef.child('companywebsite');
+            siteRef.on('value' , snap => {
+                this.setState({
+                    companywebsite: snap.val()
+                })
+            })
+            const contactRef = cominfoRef.child('contactemail');
+            contactRef.on('value' , snap => {
+                this.setState({
+                    contactemail: snap.val()
+                })
+            })
+            const service1Ref = serviceRef.child('serviceOne');
+            service1Ref.on('value' , snap => {
+                this.setState({
+                    service1: snap.val()
+                })
+            })
+            const service2Ref = serviceRef.child('serviceTwo');
+            service2Ref.on('value' , snap => {
+                this.setState({
+                    service2: snap.val()
+                })
+            })
+            // totalRef.on('value' , this.getData.bind(this))
         //     totalRef.on('value', snap => {
         //         this.setState({
         //             Heliz: snap.val()
         //         })
         // })
-    }
+            
+        }
          else {
             console.log('user has signed out or still needs to sign in.')
         }
@@ -66,55 +125,55 @@ export default class Account extends Component{
     }
 
     render(){
-        // var user = firebaseApp.auth().currentUser;
-        // var name , email ;
-        // if(user != null) {
-        //     name = user.displayName;
-        //     email = user.email
-        //     console.log('signed in ' , name , email)
-            
-        // }
-        // else{
-        //     console.log('nothing')
-        // }
+        
         return(
             <div className="maindivdash">
              {/* <Sidebar /> */}
                 <header className="buttondiv" >
                 {/* <p>{this.state.email}</p>    */}
-                <p>{this.state.Heliz}</p>
+                {/* <p>{this.state.company}</p> */}
                 {/* <p>{this.state.Heliz}</p>                 */}
                 {/* <h2>{this.state.useruid}</h2>              */}
                     {/* <Button bsStyle="danger">Logout</Button>*/}
                 </header>
                 <div className="paneldivaccount" >
                 <p>{this.state.Heliz}</p>
-                <label>Your Name:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
+                <h2>Admin Information</h2>
+                <h4>Your Name: {this.state.name}</h4>
+                {/* <input className="input_fields_accounts" value={this.state.name} /><br /><br /> */}
                 
-                <label>Company Name:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
+                <h4>Company Name: {this.state.company}</h4>
+                {/* <input className="input_fields_accounts" value={this.state.company} /><br /><br /> */}
                 
-                <label>Contact Email:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
+                <h4>Contact Number: {this.state.number}</h4>
                 
-                <label>Contact Number:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
+                <h2>Company Information</h2>
+                <h4>Company Address: {this.state.companyaddress}</h4>
+                <h4>Company Location: {this.state.companylocation}</h4> 
+                <h4>Company Website: {this.state.companywebsite}</h4> 
+                <h4>Content Email: {this.state.contactemail}</h4> 
 
-                <label>Designation:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
-
-                <label>Old Password:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
+                <h2>Services</h2>
+                <h4>1. {this.state.service1}</h4>
+                <h4>2. {this.state.service2}</h4> 
                 
-                <label>New Password:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
+                {/* <input className="input_fields_accounts" value={this.state.number} /><br /><br /> */}
 
-                <label>Confirm Password:</label><br/>
-                <input className="input_fields_accounts" /><br /><br />
+                {/* <label>Designation:</label><br/> */}
+                {/* <input className="input_fields_accounts" /><br /><br /> */}
 
-                <Button bsStyle="primary">Save Changes</Button>{' '}
-                <Button bsStyle="warning">Cancel</Button>
+                {/* <label>Old Password:</label><br/> */}
+                {/* <input className="input_fields_accounts" /><br /><br /> */}
+                
+                {/* <label>New Password:</label><br/> */}
+                {/* <input className="input_fields_accounts" /><br /><br /> */}
+
+                {/* <label>Confirm Password:</label><br/> */}
+                {/* <input className="input_fields_accounts" /><br /><br /> */}
+               
+
+                {/* <Button bsStyle="primary">Save Changes</Button>{' '}
+                <Button bsStyle="warning">Cancel</Button> */}
                 </div>
             </div>
         )

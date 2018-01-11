@@ -350,3 +350,14 @@
   padding-left: 90px;
   padding-right: 90px;
 }
+
+.input_field_confirmemail {
+  border: none;
+  padding: 7px;
+  width: 350px;
+  border-radius:3px;
+  box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  margin-top: 2px;
+  cursor: text;
+  color: black
+}

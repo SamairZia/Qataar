@@ -14,6 +14,8 @@ class Signup extends Component{
             company : '',
             email :'',
             password : '',
+            confirmpassword: '',
+            city:'',
             number : '',
             error: ''
         };
@@ -21,6 +23,8 @@ class Signup extends Component{
         this.onCompanyChange = this.onCompanyChange.bind(this);
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
+        this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this);
+        this.onCityChange = this.onCityChange.bind(this);
         this.onNumberChange = this.onNumberChange.bind(this);
         this.onSignup = this.onSignup.bind(this);
     }
@@ -50,6 +54,18 @@ class Signup extends Component{
         })
     }
 
+    onConfirmPasswordChange(event){
+        this.setState({
+            confirmpassword: event.target.value
+        })
+    }
+
+    onCityChange(event){
+        this.setState({
+            city: event.target.value
+        })
+    }
+
     onNumberChange(event){
         this.setState({
             number: event.target.value
@@ -66,6 +82,14 @@ class Signup extends Component{
             number : this.state.number,
         }
 
+        if (this.state.password !== this.state.confirmpassword){
+            alert('Please make sure password and confirm password matches.')
+        }  else if(this.state.name === '' || this.state.company === '' || this.state.email === '' || this.state.password === '' || this.state.confirmpassword === '' || this.state.city === '' || this.state.number === ''){
+            alert('Please Enter all fields.')
+        }else if (this.state.city !== 'Karachi'){
+            alert('This service is for Karachi only. Make sure your current City is Karachi')
+        }
+        else {
         firebaseApp.auth().createUserWithEmailAndPassword(admin.email, admin.password)
         .then((res) => {
             //Umair's DB stuff
@@ -75,6 +99,7 @@ class Signup extends Component{
             var companyRef = companiesRef.child(companyId);
             var companyNew = companyRef.update({'companyId': companyId});
             var company = companyRef.update({'AdminInfo': admin});
+
                alert('Account successfully created.')
             
             //Qataar's DB stuff
@@ -98,9 +123,9 @@ class Signup extends Component{
         .catch((error) => {
             let errorCode = error.code;
             let errorMessage = error.message;
-            if(this.state.name === '' || this.state.company === '' || this.state.email === '' || this.state.password === '' || this.state.number === ''){
+            if(this.state.name === '' || this.state.company === '' || this.state.email === '' || this.state.password === '' || this.state.confirmpassword === '' || this.state.city === '' || this.state.number === ''){
                 alert('Please Enter all fields.')
-            } 
+            }
             else if (errorCode === 'auth/weak-password'){
                 alert('Password is too weak.')
             }
@@ -112,6 +137,7 @@ class Signup extends Component{
             }
         })
     }
+    }
 
     render(){
         return(
@@ -121,8 +147,7 @@ class Signup extends Component{
                 </div><br />
                 <div>
                 
-                <input className="input_fields" type="text" placeholder="Username" value={this.state.name}
-                onChange={this.onNameChange} /><br /><br />
+                <input className="input_fields" type="text" placeholder="Username" pattern="[a-zA-Z]+" value={this.state.name} onChange={this.onNameChange} /><br /><br />
 
                 <input className="input_fields" type="text" placeholder="Company Name" value={this.state.company}
                 onChange={this.onCompanyChange} /><br /><br />
@@ -133,7 +158,11 @@ class Signup extends Component{
                 <input className="input_fields" type="password" placeholder="Password" value={this.state.password}
                 onChange={this.onPasswordChange} required /><br /><br />
 
-                <input className="input_fields" type="password" placeholder="Confirm Password" /><br /><br />
+                <input className="input_fields" type="password" placeholder="Confirm Password" value={this.state.confirmpassword}
+                onChange={this.onConfirmPasswordChange} required /><br /><br />
+
+                <input className="input_fields" type="text" placeholder="City" value={this.state.city}
+                onChange={this.onCityChange} required /><br/><br/>
 
                 <input className="input_fields" type="tel" placeholder="Contact Number" value={this.state.number}
                 onChange={this.onNumberChange} /><br /><br />

@@ -28,10 +28,14 @@ export default class Information extends Component{
     }
 
     changeNext(numbernext){
-        this.setState({numbernext: this.state.numbernext +1});
+        if(this.state.numberTotal > this.state.numbernext){
+            this.setState({numbernext: this.state.numbernext +1});
+        }
+      
     }
 
     changeCurrent(numbercurrent){
+        if(this.state.numberTotal >= this.state.numbernext){
         this.setState({numbercurrent: this.state.numbercurrent +1});
         var companyId = firebase.auth().currentUser.uid;
         var rootRef =  firebase.database().ref();
@@ -39,6 +43,25 @@ export default class Information extends Component{
         var companyRef = companiesRef.child(companyId);
         var company = companyRef.update({'companyId': companyId});
         var currentToken = companyRef.update({'currentToken': this.state.numbercurrent + 1});
+        }
+        else{
+            
+            alert("All Served!");
+        }
+    }
+    done(){
+        this.setState({numbercurrent: 0});
+        // this.setState({numberTotal: 0});
+        this.setState({numbernext: 1});
+        var rootRef =  firebase.database().ref();
+        var tokenRef = rootRef.child('Tokens/');
+        // var totalTokenRef = tokenRef.child('Total');
+        var total = tokenRef.update({'Total': 0});
+        
+        var companyId = firebase.auth().currentUser.uid;
+        var companiesRef = rootRef.child('Companies/');
+        var companyRef = companiesRef.child(companyId);
+        var currentToken = companyRef.update({'currentToken': 0});
     }
 
     changeTotal(numberTotal){
@@ -52,7 +75,7 @@ export default class Information extends Component{
     }
 
     componentWillMount() {
-    var companyId = 'z6eJ41eZ3aMfyTToRIzkdy8Tett2/';        
+    var companyId = 'rLkjptEBZsSaD8VCXlh4Ksyxi4z1/';        
     var rootRef =  firebase.database().ref();
     var companiesRef = rootRef.child('Companies/');
     var companyRef = companiesRef.child(companyId);
@@ -116,7 +139,7 @@ export default class Information extends Component{
                     <Row>
                         <Col lg={11}>
                         <div className="doneicon">
-                        <button className="roundbuttondone" ><span className="glyphicon glyphicon-ok" ></span></button><br />
+                        <button className="roundbuttondone" onClick={this.done.bind(this)}><span className="glyphicon glyphicon-ok" ></span></button><br />
                         <label>Done</label>
                         </div>
                         </Col>

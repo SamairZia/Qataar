@@ -12,7 +12,7 @@ export default class Menu extends Component{
                     {/* Logo */}
                 </div>
                 <nav >
-                    <Link to="/partners">Partners</Link>
+                    {/* <Link to="/partners">Partners</Link> */}
                     {/* <Link to="/pricing">Pricing</Link> */}
                     {/* <Link to="/products">Products</Link> */}
                     {/* <Link to="/my-account">My Account</Link> */}

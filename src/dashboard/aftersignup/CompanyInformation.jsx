@@ -33,7 +33,9 @@ class CompanyInformation extends Component{
             this.onServiceTwoChange = this.onServiceTwoChange.bind(this);
             this.onServiceThreeChange = this.onServiceThreeChange.bind(this);
             this.onServiceFourChange = this.onServiceFourChange.bind(this);
-            this.onServiceFiveChange = this.onServiceFiveChange.bind(this);
+            this.onServiceFiveChange = this.onServiceFiveChange.bind(this);       
+            this.onSignout = this.onSignout.bind(this)
+
         }
     }
     //Input fields onChange listeners for Company Information
@@ -101,6 +103,15 @@ class CompanyInformation extends Component{
             serviceFive : event.target.value
         })
     }
+    onSignout(){
+        firebaseApp.auth().signOut()
+        .then((success) => {
+            this.props.history.push('/')
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
 
     //function for saving company Information and services both
     handleCompanyInformation(event){
@@ -147,7 +158,7 @@ class CompanyInformation extends Component{
     render(){
         return(
             <div className="div-container">
-            <header className="right" ><Button bsStyle="danger" >Log Out</Button></header>
+            <header className="right" ><Button bsStyle="danger" onClick={this.onSignout} >Log Out</Button></header>
                 <PageHeader >Company Information</PageHeader>
 
                 <Panel header="Information" bsStyle="info">

@@ -30,6 +30,9 @@ class Login extends Component{
     }
 
     onLogin(){
+        if(/^[A-Za-z\s]+$/.test(this.state.name) != true){
+            alert('Only Alphabets are allowed in Username field.')
+        }else{
         const dbRef = firebaseApp.database().ref("/");
         let user = {
             email : this.state.email,
@@ -55,6 +58,7 @@ class Login extends Component{
                 alert(errorCode , 'No user data of this credentials.')
             }
         })
+    }
     }
 
     // handleButton(e) {

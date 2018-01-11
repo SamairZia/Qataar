@@ -134,7 +134,20 @@ class CompanyInformation extends Component{
         const forID = firebaseApp.auth().currentUser.uid;
         if(this.state.companyname === '' ||this.state.companylocation === '' || this.state.companyaddress === '' ||this.state.contactemail === '' ||this.state.companywebsite === '' ||this.state.companybranches === '' || this.state.serviceOne === '') {
             alert('Please Fill all the fields and add atleast one Service.')
-        }else {
+        } 
+        else if(/^[A-Za-z\s]+$/.test(this.state.companyname) != true){
+            alert('Only Alphabets are allowed in COmpany Name field.')
+        }
+        else if(/^[A-Za-z\s]+$/.test(this.state.companylocation) != true){
+            alert('Only Alphabets are allowed in Location field.')
+        } 
+        else if (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.contactemail) != true){
+            alert('Email incorrect.')
+        }
+        else if (/[a-z0-9._%+-]+\.[a-z]{2,3}$/.test(this.state.companywebsite) != true){
+            alert('Website incorrect.')
+        }
+        else {
         const fire = dbRef.ref('/Companies')
                 fire.child(forID).update({ companyInfo , servicesInfo })
                     .then((success) => {
@@ -142,6 +155,13 @@ class CompanyInformation extends Component{
                     })
             .then((success) => {
                 this.props.history.push('/my-account')
+            })
+            .catch((error) => {
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                if (errorCode === 'auth/invalid-email'){
+                    alert('Please enter valid Email.')
+                }
             })
         }
     }

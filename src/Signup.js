@@ -84,9 +84,20 @@ class Signup extends Component{
 
         if (this.state.password !== this.state.confirmpassword){
             alert('Please make sure password and confirm password matches.')
-        }  else if(this.state.name === '' || this.state.company === '' || this.state.email === '' || this.state.password === '' || this.state.confirmpassword === '' || this.state.city === '' || this.state.number === ''){
+        }  
+        else if(this.state.name === '' || this.state.company === '' || this.state.email === '' || this.state.password === '' || this.state.confirmpassword === '' || this.state.city === '' || this.state.number === ''){
             alert('Please Enter all fields.')
-        }else if (this.state.city !== 'Karachi'){
+        }
+         else if(/^[A-Za-z\s]+$/.test(this.state.name) != true){
+            alert('Only Alphabets are allowed in Username field.')
+        } 
+        else if(/^[A-Za-z\s]+$/.test(this.state.company) != true){
+            alert('Only Alphabets are allowed in Company field.')
+        } 
+        else if( /^[0-9]+$/.test(this.state.number) != true || (this.state.number).length < 11){
+            alert('Please make sure number is greater then 11 characters and contains only numbers.')
+        }
+        else if (this.state.city !== 'Karachi'){
             alert('This service is for Karachi only. Make sure your current City is Karachi')
         }
         else {
@@ -147,7 +158,7 @@ class Signup extends Component{
                 </div><br />
                 <div>
                 
-                <input className="input_fields" type="text" placeholder="Username" pattern="[a-zA-Z]+" value={this.state.name} onChange={this.onNameChange} /><br /><br />
+                <input className="input_fields" type="text" placeholder="Username" value={this.state.name} onChange={this.onNameChange} /><br /><br />
 
                 <input className="input_fields" type="text" placeholder="Company Name" value={this.state.company}
                 onChange={this.onCompanyChange} /><br /><br />
